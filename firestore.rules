@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // This rule allows anyone to read and write to the specific document
+    // where the Netatmo tokens are stored. For this single-purpose app,
+    // this is acceptable. In a multi-user application, you would restrict
+    // this to authenticated users or a server-side process.
+    match /netatmo_tokens/main_account {
+      allow read, write: if true;
+    }
+  }
+} 
