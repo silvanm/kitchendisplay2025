@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import * as cheerio from 'cheerio';
 
-const POOL_URL = 'https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/sport-und-badeanlagen/sommerbaeder/badi-aktuell.html';
-const LAKE_URL = 'https://www.tecson-data.ch/zurich/tiefenbrunnen/index.php';
-const RIVER_URL = 'https://us-central1-onyx-outpost-122619.cloudfunctions.net/detect_temperature';
+const POOL_URL = process.env.POOL_TEMP_URL!;
+const LAKE_URL = process.env.LAKE_TEMP_URL!;
+const RIVER_URL = process.env.RIVER_TEMP_URL!;
 
 // Helper function to fetch and parse text
 async function fetchText(url: string) {

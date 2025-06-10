@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export async function GET(request: NextRequest) {
-  const { NETATMO_CLIENT_ID } = process.env;
+  const { NETATMO_CLIENT_ID, NETATMO_SCOPE } = process.env;
   
   if (!NETATMO_CLIENT_ID) {
     return NextResponse.json({ error: 'Netatmo Client ID not configured' }, { status: 500 });
@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   const params = new URLSearchParams({
     client_id: NETATMO_CLIENT_ID,
     redirect_uri: redirectUri,
-    scope: 'read_station',
+    scope: NETATMO_SCOPE || 'read_station',
     state: state,
     response_type: 'code',
   });

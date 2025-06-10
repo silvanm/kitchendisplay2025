@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
 const KACHELMANN_API_KEY = process.env.KACHELMANN_API_KEY;
-const WEATHER_LAT = process.env.WEATHER_LATITUDE || '47.382';
-const WEATHER_LON = process.env.WEATHER_LONGITUDE || '8.482';
+const WEATHER_LAT = process.env.WEATHER_LATITUDE;
+const WEATHER_LON = process.env.WEATHER_LONGITUDE;
 
 export async function GET() {
   if (!KACHELMANN_API_KEY) {
