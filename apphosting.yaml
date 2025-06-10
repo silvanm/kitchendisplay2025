@@ -1,0 +1,25 @@
+# apphosting.yaml
+
+# Firebase App Hosting configuration
+runConfig:
+  # The following environment variables are non-sensitive and can be stored directly
+  env:
+    - variable: NETATMO_DEVICE_ID
+      value: "70:ee:50:01:f4:e6"
+    - variable: SHELLY_DEVICE_ID
+      value: "485519db476d"
+    - variable: WEATHER_LATITUDE
+      value: "47.382"
+    - variable: WEATHER_LONGITUDE
+      value: "8.482"
+    - variable: GOOGLE_PHOTOS_SERVICE_URL
+      value: "https://googlephotos-759234838220.europe-west1.run.app/photos"
+env:
+  - variable: NETATMO_CLIENT_SECRET
+    secret: NETATMO_CLIENT_SECRET
+  - variable: NETATMO_CLIENT_ID
+    secret: NETATMO_CLIENT_ID
+  - variable: SHELLY_AUTH_KEY
+    secret: SHELLY_AUTH_KEY
+  - variable: KACHELMANN_API_KEY
+    secret: KACHELMANN_API_KEY
