@@ -1,38 +1,37 @@
 # apphosting.yaml
 
 # Firebase App Hosting configuration
-runConfig:
-  env:
-    # Non-sensitive plaintext variables
-    - variable: NETATMO_DEVICE_ID
-      value: "70:ee:50:01:f4:e6"
-    - variable: SHELLY_DEVICE_ID
-      value: "485519db476d"
-    - variable: WEATHER_LATITUDE
-      value: "47.382"
-    - variable: WEATHER_LONGITUDE
-      value: "8.482"
-    - variable: GOOGLE_PHOTOS_SERVICE_URL
-      value: "https://googlephotos-759234838220.europe-west1.run.app/photos"
-    - variable: NETATMO_SCOPE
-      value: "read_station"
-    - variable: POOL_TEMP_URL
-      value: "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/sport-und-badeanlagen/sommerbaeder/badi-aktuell.html"
-    - variable: LAKE_TEMP_URL
-      value: "https://www.tecson-data.ch/zurich/tiefenbrunnen/index.php"
-    - variable: RIVER_TEMP_URL
-      value: "https://us-central1-onyx-outpost-122619.cloudfunctions.net/detect_temperature"
-    - variable: LOCATION_LATITUDE
-      value: "47.3807813"
-    - variable: LOCATION_LONGITUDE
-      value: "8.4838635"
+env:
+  # Non-sensitive plaintext variables
+  - variable: NETATMO_DEVICE_ID
+    value: "70:ee:50:01:f4:e6"
+  - variable: SHELLY_DEVICE_ID
+    value: "485519db476d"
+  - variable: WEATHER_LATITUDE
+    value: "47.382"
+  - variable: WEATHER_LONGITUDE
+    value: "8.482"
+  - variable: GOOGLE_PHOTOS_SERVICE_URL
+    value: "https://googlephotos-759234838220.europe-west1.run.app/photos"
+  - variable: NETATMO_SCOPE
+    value: "read_station"
+  - variable: POOL_TEMP_URL
+    value: "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/sport-und-badeanlagen/sommerbaeder/badi-aktuell.html"
+  - variable: LAKE_TEMP_URL
+    value: "https://www.tecson-data.ch/zurich/tiefenbrunnen/index.php"
+  - variable: RIVER_TEMP_URL
+    value: "https://us-central1-onyx-outpost-122619.cloudfunctions.net/detect_temperature"
+  - variable: LOCATION_LATITUDE
+    value: "47.3807813"
+  - variable: LOCATION_LONGITUDE
+    value: "8.4838635"
 
-    # Secrets managed by Secret Manager
-    - variable: NETATMO_CLIENT_ID
-      secret: NETATMO_CLIENT_ID
-    - variable: NETATMO_CLIENT_SECRET
-      secret: NETATMO_CLIENT_SECRET
-    - variable: SHELLY_AUTH_KEY
-      secret: SHELLY_AUTH_KEY
-    - variable: KACHELMANN_API_KEY
-      secret: KACHELMANN_API_KEY
+  # Secrets managed by Secret Manager
+  - variable: NETATMO_CLIENT_ID
+    secret: NETATMO_CLIENT_ID
+  - variable: NETATMO_CLIENT_SECRET
+    secret: NETATMO_CLIENT_SECRET
+  - variable: SHELLY_AUTH_KEY
+    secret: SHELLY_AUTH_KEY
+  - variable: KACHELMANN_API_KEY
+    secret: KACHELMANN_API_KEY
