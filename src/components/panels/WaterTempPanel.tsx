@@ -9,7 +9,7 @@ interface WaterTempPanelProps {
 
 export default function WaterTempPanel({ data }: WaterTempPanelProps) {
   const formatTemp = (temp: number | null) => {
-    return temp !== null ? `${temp.toFixed(1)}°C` : '-';
+    return temp !== null ? `${temp.toFixed(0)}°C` : '-';
   };
 
   if (!data) {

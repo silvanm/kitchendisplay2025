@@ -15,7 +15,7 @@ interface WeatherPanelProps {
 export default function WeatherPanel({ weatherData, forecastData, error, isLoading }: WeatherPanelProps) {
   const { isDetailed } = useDetailedView();
 
-  const formatTemp = (temp: number | null) => temp !== null ? `${temp.toFixed(1)}°C` : '-';
+  const formatTemp = (temp: number | null) => temp !== null ? `${temp.toFixed(0)}°C` : '-';
 
   if (isLoading) return <span>Loading Weather...</span>;
   if (error === WeatherError.NotAuthenticated) {
