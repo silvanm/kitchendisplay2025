@@ -23,7 +23,7 @@ export default function ForecastPanel({ data }: ForecastPanelProps) {
   const weatherIcon = ICON_CODE_MAP[data.weatherSymbol] || "B"; // Default to sunshine
 
   return (
-    <div className="flex justify-center items-center space-x-10">
+    <div className="flex justify-center items-center space-x-2">
       {/* Weather Icon */}
       <div 
         className="weather-icon"
@@ -32,7 +32,7 @@ export default function ForecastPanel({ data }: ForecastPanelProps) {
       ></div>
 
       {/* Temp Min/Max */}
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center ">
         <Image src="/img/arrow_down.png" alt="Min" width={32} height={32} className="w-[3vw] h-[3vw]" />
         <span>{data.tempMin.toFixed(0)}°</span>
         <Image src="/img/arrow_up.png" alt="Max" width={32} height={32} className="w-[3vw] h-[3vw]" />
@@ -41,7 +41,7 @@ export default function ForecastPanel({ data }: ForecastPanelProps) {
 
       {/* Precipitation Icon (Umbrella) */}
       {data.precCurrent > 0 && (
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center ">
           <Image src="/img/umbrella.png" alt="Rain" width={40} height={40} className="w-[3.8vw] h-[3.8vw]" />
           <span>{data.precCurrent.toFixed(1)}mm</span>
         </div>

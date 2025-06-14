@@ -20,7 +20,7 @@ export default function PowerPanel({ powerData, weatherData }: PowerPanelProps) 
   return (
     <div className="flex flex-col justify-center items-center">
       {/* Permanent View */}
-      <div className="flex justify-center items-center space-x-2">
+      <div className="flex justify-center items-center ">
         <Image 
           src="/img/flash.svg"
           alt="Power"
@@ -35,7 +35,7 @@ export default function PowerPanel({ powerData, weatherData }: PowerPanelProps) 
 
       {/* Detailed View (On Touch) */}
       {isDetailed && (
-        <div className="flex justify-center items-center space-x-2 mt-4 text-[2.5vw]">
+        <div className="flex justify-center items-center  mt-4 text-[2.5vw]">
           <span>CO₂:</span>
           <span>{weatherData?.co2 !== null ? `${weatherData?.co2}ppm` : '-'}</span>
         </div>
