@@ -14,18 +14,23 @@ async function fetchText(url: string) {
   return response.text();
 }
 
-// Scraper for Pool Temperature
-async function getPoolTemp(): Promise<number | null> {
-  try {
-    const html = await fetchText(POOL_URL);
-    const $ = cheerio.load(html);
-    const tempText = $('.col-3:contains("Letzigraben")').next().next().text();
-    const tempMatch = tempText.match(/(\d+)\s*°C/);
-    return tempMatch ? parseInt(tempMatch[1], 10) : null;
-  } catch (error) {
-    console.error('Error scraping pool temp:', error);
-    return null;
+async function getPoolTemp(): Promise<number> {
+  const html = await fetchText(POOL_URL);
+
+  // Map of locations and their regex patterns
+  const locations: { [key: string]: RegExp } = {
+    pool: /Letzigraben.*?(\d+)\s*°C/,
+    // Add more locations as needed
+  };
+
+  const result: { [key: string]: number } = {};
+
+  for (const [key, regex] of Object.entries(locations)) {
+    const match = html.match(regex);
+    result[key] = match ? parseInt(match[1], 10) : -1;
   }
+
+  return result.pool;
 }
 
 // Scraper for Lake Temperature
@@ -33,7 +38,7 @@ async function getLakeTemp(): Promise<number | null> {
   try {
     const html = await fetchText(LAKE_URL);
     const $ = cheerio.load(html);
-    const tempText = $('table tr:nth-child(4) td:nth-child(3) table tr:nth-child(2) td:nth-child(3) span').text();
+    const tempText = $('body > table > tbody > tr:nth-child(2) > td > table:nth-child(2) > tbody > tr > td > table > tbody > tr > td > table > tbody > tr:nth-child(3) > td > table > tbody > tr:nth-child(6) > td:nth-child(3) > table > tbody > tr:nth-child(2) > td:nth-child(3) > span').text();
     const tempMatch = tempText.match(/(\d+[.,]\d+)/);
     return tempMatch ? parseFloat(tempMatch[0].replace(',', '.')) : null;
   } catch (error) {

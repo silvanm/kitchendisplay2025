@@ -32,7 +32,7 @@ export default function WeatherPanel({ weatherData, forecastData, error, isLoadi
   return (
     <div className="flex flex-col justify-center items-center">
       {/* Permanent View */}
-      <div className="flex justify-center items-center space-x-12">
+      <div className="flex justify-center items-center space-x-10">
         <div className="flex items-center space-x-2">
           <Image src="/img/indoor.png" alt="Indoor" width={46} height={46} className="w-[4.6vw] h-[4.6vw]" />
           <span>{formatTemp(weatherData.indoorTemp)}</span>

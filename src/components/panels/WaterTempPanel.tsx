@@ -17,7 +17,7 @@ export default function WaterTempPanel({ data }: WaterTempPanelProps) {
   }
 
   return (
-    <div className="flex justify-center items-center space-x-10">
+    <div className="flex justify-center items-center space-x-4">
       {/* Pool Temperature */}
       <div className="flex items-center space-x-2">
         <Image src="/img/pool.png" alt="Pool" width={46} height={46} className="w-[4.6vw] h-[4.6vw]" />
