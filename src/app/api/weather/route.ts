@@ -52,8 +52,8 @@ export async function GET() {
     const extractedData = {
       indoorTemp: indoorModule.Temperature,
       co2: indoorModule.CO2,
-      outdoorTemp: outdoorModule ? outdoorModule.dashboard_data.Temperature : null,
-      rain: rainModule ? rainModule.dashboard_data.sum_rain_1 : null,
+      outdoorTemp: outdoorModule?.dashboard_data?.Temperature ?? null,
+      rain: rainModule?.dashboard_data?.sum_rain_1 ?? null,
     };
 
     return NextResponse.json(extractedData);
