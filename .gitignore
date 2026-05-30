@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# local tooling (may capture secrets)
+.history/
+.omc/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
