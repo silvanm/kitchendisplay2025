@@ -5,13 +5,24 @@ const POOL_URL = process.env.POOL_TEMP_URL!;
 const LAKE_URL = process.env.LAKE_TEMP_URL!;
 const RIVER_URL = process.env.RIVER_TEMP_URL!;
 
-// Helper function to fetch and parse text
+// Helper function to fetch and parse text.
+// Note: Response.text() always decodes as UTF-8 per the fetch spec, ignoring the
+// Content-Type charset. Some sources (e.g. tecson-data) are ISO-8859-1, which
+// would corrupt "°C" and break temperature regexes — so decode by the declared
+// charset instead.
 async function fetchText(url: string) {
   const response = await fetch(url, { next: { revalidate: 900 } }); // Revalidate every 15 mins
   if (!response.ok) {
     throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
   }
-  return response.text();
+  const buffer = await response.arrayBuffer();
+  const charsetMatch = (response.headers.get('content-type') || '').match(/charset=([^;]+)/i);
+  const charset = charsetMatch ? charsetMatch[1].trim() : 'utf-8';
+  try {
+    return new TextDecoder(charset).decode(buffer);
+  } catch {
+    return new TextDecoder('utf-8').decode(buffer);
+  }
 }
 
 async function getPoolTemp(): Promise<number> {
